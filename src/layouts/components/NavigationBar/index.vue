@@ -10,7 +10,7 @@ import Hamburger from "../Hamburger/index.vue"
 import Breadcrumb from "../Breadcrumb/index.vue"
 import Sidebar from "../Sidebar/index.vue"
 // import Notify from "@/components/Notify/index.vue"
-import ThemeSwitch from "@/components/ThemeSwitch/index.vue"
+// import ThemeSwitch from "@/components/ThemeSwitch/index.vue"
 import Screenfull from "@/components/Screenfull/index.vue"
 import SearchMenu from "@/components/SearchMenu/index.vue"
 import { DeviceEnum } from "@/constants/app-key"
@@ -21,7 +21,7 @@ const settingsStore = useSettingsStore()
 const userStore = useUserStore()
 
 const { sidebar, device } = storeToRefs(appStore)
-const { layoutMode, showThemeSwitch, showScreenfull, showSearchMenu } = storeToRefs(settingsStore)
+const { layoutMode, showScreenfull, showSearchMenu } = storeToRefs(settingsStore)
 // const { layoutMode, showNotify, showThemeSwitch, showScreenfull, showSearchMenu } = storeToRefs(settingsStore)
 
 const isTop = computed(() => layoutMode.value === "top")
@@ -47,7 +47,7 @@ const logout = () => {
     <div class="right-menu">
       <SearchMenu v-if="showSearchMenu" class="right-menu-item" />
       <Screenfull v-if="showScreenfull" class="right-menu-item" />
-      <ThemeSwitch v-if="showThemeSwitch" class="right-menu-item" />
+      <!-- <ThemeSwitch v-if="showThemeSwitch" class="right-menu-item" /> -->
       <!-- <Notify v-if="showNotify" class="right-menu-item" /> -->
       <el-dropdown class="right-menu-item">
         <div class="right-menu-avatar">
@@ -56,13 +56,7 @@ const logout = () => {
         </div>
         <template #dropdown>
           <el-dropdown-menu>
-            <a target="_blank" href="https://github.com/un-pany/v3-admin-vite">
-              <el-dropdown-item>GitHub</el-dropdown-item>
-            </a>
-            <a target="_blank" href="https://gitee.com/un-pany/v3-admin-vite">
-              <el-dropdown-item>Gitee</el-dropdown-item>
-            </a>
-            <el-dropdown-item divided @click="logout">
+            <el-dropdown-item @click="logout">
               <span style="display: block">退出登录</span>
             </el-dropdown-item>
           </el-dropdown-menu>
