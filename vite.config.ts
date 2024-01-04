@@ -7,6 +7,7 @@ import vueJsx from "@vitejs/plugin-vue-jsx"
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons"
 import svgLoader from "vite-svg-loader"
 import UnoCSS from "unocss/vite"
+import VueDevTools from "vite-plugin-vue-devtools"
 
 /** 配置项文档：https://cn.vitejs.dev/config */
 export default (configEnv: ConfigEnv): UserConfigExport => {
@@ -79,6 +80,7 @@ export default (configEnv: ConfigEnv): UserConfigExport => {
     },
     /** Vite 插件 */
     plugins: [
+      VueDevTools(),
       vue(),
       vueJsx(),
       /** 将 SVG 静态图转化为 Vue 组件 */
